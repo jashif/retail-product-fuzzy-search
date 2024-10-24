@@ -5,10 +5,12 @@ import { errorMiddleware } from "./api/middlewares/error-middleware";
 import { requestMiddleware } from "./api/middlewares/request-logger";
 import { getRoutes } from "./api/routes";
 import { MemoryStore } from "./core/db/mem-store";
+import { generateRandomProducts } from "./utils/product-mock";
 dotenv.config();
 
 async function startServer() {
   const store = new MemoryStore();
+  generateRandomProducts(store);
   const app: Application = express();
   const port = process.env.PORT || 3000;
   const base: string = process.env.base_url ?? "";
