@@ -1,17 +1,23 @@
-
 import express from "express";
-import productRoute from "./product.route"
-const router = express.Router();
+import { initProductRoute } from "./product.route";
+import { MemoryStore } from "../../core/db/mem-store";
 
-const defaultRoutes = [
+interface Route {
+  store: MemoryStore;
+}
+
+export function getRoutes(route: Route): express.Router {
+  const router = express.Router();
+  const defaultRoutes = [
     {
-        path: "/",
-        route: productRoute,
+      path: "/",
+      route: initProductRoute(route.store),
     },
-];
+  ];
 
-defaultRoutes.forEach((route) => {
+  defaultRoutes.forEach((route) => {
     router.use(route.path, route.route);
-});
+  });
 
-export default router;
+  return router;
+}

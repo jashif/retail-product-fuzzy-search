@@ -1,25 +1,22 @@
 import express from "express";
+import { MemoryStore } from "../../core/db/mem-store";
+import { ProductService } from "../../core/services/product-service";
 import { ProductController } from "../controllers/product-controller";
 import { asyncErrorMiddleware } from "../middlewares/async-middleware";
-import { ProductService } from "../../core/services/product-service";
-import { MemoryStore } from "../../core/db/mem-store";
 
-const store = new MemoryStore();
-store.populateMockData();
+export function initProductRoute(store: MemoryStore): express.Router {
+  const router = express.Router();
+  const productService = new ProductService(store);
+  const productController = new ProductController(productService);
 
-const productService = new ProductService(store);
-const controller = new ProductController(productService);
+  router.post(
+    "/products",
+    asyncErrorMiddleware(productController.addProduct.bind(productController))
+  );
+  router.get(
+    "/products",
+    asyncErrorMiddleware(productController.getProducts.bind(productController))
+  );
 
-const router = express.Router();
-
-router.post(
-  "/products",
-  asyncErrorMiddleware(controller.addProduct.bind(controller))
-);
-
-router.get(
-  "/products",
-  asyncErrorMiddleware(controller.getProducts.bind(controller))
-);
-
-export default router;
+  return router;
+}
