@@ -7,4 +7,8 @@ export class ProductService {
   public async addProduct(product: Product): Promise<Product> {
     return this.store.addProduct(product);
   }
+
+  public async getProducts(offset: number, limit: number): Promise<Product[]> {
+    return this.store.getAllProducts(offset, limit);
+  }
 }

@@ -9,4 +9,11 @@ export class ProductController {
     const result = await this.productService.addProduct(product);
     res.json(result);
   }
+
+  public async getProducts(req: Request, res: Response): Promise<void> {
+    const offset = parseInt(req.query.offset as string) || 0;
+    const limit = parseInt(req.query.limit as string) || 10;
+    const result = await this.productService.getProducts(offset, limit);
+    res.json(result);
+  }
 }

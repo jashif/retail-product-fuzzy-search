@@ -8,6 +8,10 @@ export class MemoryStore {
     return product;
   }
 
+  getAllProducts(offset: number, limit: number): Product[] {
+    return this.products.slice(offset, offset + limit);
+  }
+
   populateMockData(): void {
     for (let i = 0; i < 100; i++) {
       const product: Product = {

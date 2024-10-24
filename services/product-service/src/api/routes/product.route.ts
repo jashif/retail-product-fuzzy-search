@@ -12,5 +12,14 @@ const controller = new ProductController(productService);
 
 const router = express.Router();
 
-router.post("/products", asyncErrorMiddleware(controller.addProduct.bind(controller)));
+router.post(
+  "/products",
+  asyncErrorMiddleware(controller.addProduct.bind(controller))
+);
+
+router.get(
+  "/products",
+  asyncErrorMiddleware(controller.getProducts.bind(controller))
+);
+
 export default router;
