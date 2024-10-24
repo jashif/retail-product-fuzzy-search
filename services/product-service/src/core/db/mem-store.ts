@@ -1,3 +1,4 @@
+import { fuzzySearch } from "../../utils/fuzzy-search";
 import { Product } from "../interfaces/product";
 
 export class MemoryStore {
@@ -10,5 +11,9 @@ export class MemoryStore {
 
   getAllProducts(offset: number, limit: number): Product[] {
     return this.products.slice(offset, offset + limit);
+  }
+
+  searchProducts(term: string): Product[] {
+    return fuzzySearch(term, this.products);
   }
 }

@@ -16,4 +16,10 @@ export class ProductController {
     const result = await this.productService.getProducts(offset, limit);
     res.json(result);
   }
+
+  public async searchProducts(req: Request, res: Response): Promise<void> {
+    const term = req.query.term as string;
+    const result = await this.productService.searchProducts(term);
+    res.json(result);
+  }
 }

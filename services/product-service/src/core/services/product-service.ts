@@ -11,4 +11,8 @@ export class ProductService {
   public async getProducts(offset: number, limit: number): Promise<Product[]> {
     return this.store.getAllProducts(offset, limit);
   }
+
+  public async searchProducts(term: string): Promise<Product[]> {
+    return this.store.searchProducts(term);
+  }
 }

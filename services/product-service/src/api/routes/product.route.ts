@@ -18,5 +18,11 @@ export function initProductRoute(store: MemoryStore): express.Router {
     asyncErrorMiddleware(productController.getProducts.bind(productController))
   );
 
+  router.get(
+    "/search",
+    asyncErrorMiddleware(
+      productController.searchProducts.bind(productController)
+    )
+  );
   return router;
 }
