@@ -5,4 +5,5 @@ export interface Product {
   description: string;
   price: number;
   imageUrl: string;
+  score?: number;
 }

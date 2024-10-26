@@ -1,10 +1,20 @@
 import { Product } from "../core/interfaces/product";
 
 export function fuzzySearch(term: string, products: Product[]): Product[] {
-  const buf = ".*" + term.replace(/(.)/g, "$1.*").toLowerCase();
-  const reg = new RegExp(buf);
-  const newList = products.filter(function (e) {
-    return reg.test(e.name.toLowerCase());
-  });
-  return newList;
+  if (!term || !products.length) return [];
+  return products.filter((product) => fuzzy(product.name, term));
 }
+
+const fuzzy = (str: string, query: string): boolean => {
+  str = str.toLowerCase();
+  query = query.toLowerCase();
+
+  let i = 0;
+  let lastSearched = -1;
+
+  for (const char of query) {
+    lastSearched = str.indexOf(char, lastSearched + 1);
+    if (lastSearched === -1) return false;
+  }
+  return true;
+};
