@@ -8,10 +8,16 @@
   "packageManager": "yarn@3.4.1",
   "license": "MIT",
   "workspaces": [
-    "services/*"
+    "services/*",
+    "frontend/*"
   ],
   "scripts": {
     "start:server": "yarn workspaces foreach --include '@services/*' --parallel --jobs 20 --interlaced run dev",
+    "start:client": "yarn workspaces foreach --include '@frontend/*' --parallel --jobs 20 --interlaced run start",
+    "start": "concurrently \"yarn start:server\" \"yarn start:client\"",
     "lint": "yarn workspaces foreach --jobs 20 --interlaced --parallel --include  '@services/*' run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
   }
 }
