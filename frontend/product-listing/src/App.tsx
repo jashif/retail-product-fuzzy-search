@@ -4,15 +4,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import MainPage from "./views/MainPage";
 import ProductDetail from "./views/ProductDetail";
+import { ProductProvider } from "./context/product-context";
 
 const App = () => (
   <div className="App">
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/products/:productId" element={<ProductDetail />} />
-      </Routes>
-    </BrowserRouter>
+    <ProductProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/products/:productId" element={<ProductDetail />} />
+        </Routes>
+      </BrowserRouter>
+    </ProductProvider>
   </div>
 );
 const rootElement = document.getElementById("app");
