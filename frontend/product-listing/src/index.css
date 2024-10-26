@@ -9,3 +9,22 @@ body {
   height: 100vh;
   padding-top: 50px;
 }
+
+.back-button {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #007bff;
+  background-color: transparent;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  color: #000;
+  border: none;
+  background-color: #fbda0c;
+}

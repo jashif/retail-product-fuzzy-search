@@ -1,0 +1,34 @@
+.product-item-detail {
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+}
+
+.product-item-image {
+  display: flex;
+  justify-content: center;
+}
+
+.product-item-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.product-item-name {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.product-item-category,
+.product-item-description,
+.product-item-price {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.product-item-description {
+  color: #666;
+}

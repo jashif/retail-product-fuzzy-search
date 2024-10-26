@@ -98,7 +98,7 @@ export function generateRandomProducts(store: MemoryStore): void {
       } perfect for any ${
         categories[Math.floor(Math.random() * categories.length)]
       }.`,
-      imageUrl: `https://fakeimg.pl/200x200/0057AD/FBDA0C?text=${productNames[productIndex]}&font=noto&font_size=24`,
+      imageUrl: `https://fakeimg.pl/500x500/0057AD/FBDA0C?text=${productNames[productIndex]}&font=noto&font_size=24`,
       category: categories[Math.floor(Math.random() * categories.length)],
     };
 
