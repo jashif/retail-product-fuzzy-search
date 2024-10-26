@@ -15,4 +15,8 @@ export class ProductService {
   public async searchProducts(term: string): Promise<Product[]> {
     return this.store.searchProducts(term);
   }
+
+  public async getProduct(id: string): Promise<Product | null> {
+    return this.store.getProduct(id);
+  }
 }

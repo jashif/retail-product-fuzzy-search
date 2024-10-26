@@ -22,4 +22,10 @@ export class ProductController {
     const result = await this.productService.searchProducts(term);
     res.json(result);
   }
+
+  public async getProduct(req: Request, res: Response): Promise<void> {
+    const id = req.params.id;
+    const result = await this.productService.getProduct(id);
+    res.json(result);
+  }
 }

@@ -5,7 +5,7 @@ info:
   description: API for managing products.
 
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:8080
 
 paths:
   /products:
@@ -42,12 +42,12 @@ paths:
                 - price
                 - imageUrl
       responses:
-        '201':
+        "201":
           description: Product created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                $ref: "#/components/schemas/Product"
 
     get:
       summary: Retrieve all products
@@ -68,14 +68,14 @@ paths:
             type: integer
             example: 10
       responses:
-        '200':
+        "200":
           description: A list of products
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Product'
+                  $ref: "#/components/schemas/Product"
 
   /search:
     get:
@@ -89,14 +89,14 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: A list of matching products
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Product'
+                  $ref: "#/components/schemas/Product"
 
 components:
   schemas:

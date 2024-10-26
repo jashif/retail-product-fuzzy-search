@@ -24,5 +24,10 @@ export function initProductRoute(store: MemoryStore): express.Router {
       productController.searchProducts.bind(productController)
     )
   );
+
+  router.get(
+    "/products/:id",
+    asyncErrorMiddleware(productController.getProduct.bind(productController))
+  );
   return router;
 }

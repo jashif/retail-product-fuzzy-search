@@ -16,4 +16,8 @@ export class MemoryStore {
   searchProducts(term: string): Product[] {
     return fuzzySearch(term, this.products);
   }
+
+  getProduct(id: string): Product | null {
+    return this.products.find((product) => product.id === id) || null;
+  }
 }

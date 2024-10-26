@@ -12,7 +12,7 @@ async function startServer() {
   const store = new MemoryStore();
   generateRandomProducts(store);
   const app: Application = express();
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 8080;
   const base: string = process.env.base_url ?? "";
   app.use(cors());
   app.use(express.json());
