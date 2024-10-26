@@ -4,7 +4,7 @@ import "./search.css";
 import useDebounce from "../../hooks/useDebounce";
 
 const Search = () => {
-  const { setSearchValue, loading } = useProductContext();
+  const { setSearchValue, loading } = useProductContext()!;
 
   const [inputValue, setInputValue] = useState("");
   const debouncedSearchTerm = useDebounce(inputValue, 100);

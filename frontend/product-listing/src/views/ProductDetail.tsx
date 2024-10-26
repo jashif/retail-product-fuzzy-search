@@ -7,6 +7,7 @@ const ProductDetail = () => {
   const { getProduct, loadingDetail } = useProductContext()!;
   const { productId } = useParams();
   const [product, setProduct] = React.useState<any>(null);
+  const [error, setError] = React.useState<any>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,13 +15,21 @@ const ProductDetail = () => {
       return;
     }
 
-    getProduct(productId).then((data) => {
-      setProduct(data);
-    });
+    getProduct(productId)
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch(() => {
+        setError("Error fetching product");
+      });
   }, []);
 
   if (loadingDetail) {
     return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (
