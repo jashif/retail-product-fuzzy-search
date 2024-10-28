@@ -52,6 +52,17 @@ The project is a mono repo with frontend and services:
 - `frontend`: Contains the frontend applications.
 - `services`: List the apis in the project.
 
-### 3. Database Choice
+### 2. Database Choice
 
 An in-memory data store is currently used for simplicity. For a production setup, a database like Redis or PostgreSQL could be considered for persistence and scalability.
+
+### Test
+
+- Product mock data is loaded during bootstrap.
+  to test search try below words
+  ```
+  Billy
+  bil
+  Hem
+  Hemnes
+  ```
